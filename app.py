@@ -9,7 +9,6 @@ from cdk_pipeline_demo.pipeline_stack import MyPipelineStack
 PIPELINE_ACCOUNT = '656001362760'
 
 app = cdk.App()
-WebServiceStack(app, "WebServiceStack")
 MyPipelineStack(app, 'PipelineStack',
     env={
         'account': PIPELINE_ACCOUNT,
