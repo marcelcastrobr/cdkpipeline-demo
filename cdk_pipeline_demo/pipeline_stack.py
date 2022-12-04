@@ -23,3 +23,13 @@ class MyPipelineStack(Stack):
             account='656001362760',
             region='eu-central-1'
         ) ))
+
+        pipeline.add_stage(MyWebservice(self, "Prod", env=cdk.Environment(
+            account='656001362760',
+            region='eu-central-1'
+        ) ),
+        # Adding manual approval
+        pre=[pipelines.ManualApprovalStep("PromoteToProd")]
+        )
+    
+
