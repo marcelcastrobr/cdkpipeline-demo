@@ -19,17 +19,21 @@ class MyPipelineStack(Stack):
                 commands=["pytest unittests", "npx cdk synth"]))
 
 
-        pipeline.add_stage(MyWebservice(self, "Pre-prod", env=cdk.Environment(
+        my_app_preprod = MyWebservice(self, "Pre-prod", env=cdk.Environment(
             account='656001362760',
             region='eu-central-1'
-        ) ))
+        ) )
+        pipeline.add_stage(my_app_preprod,
+            post=[pipelines.ShellStep("Validate Endpoint",
+            env_from_cfn_outputs={"URL": my_app_preprod.url_output},
+            commands=["pip install -r requirements.txt", "pytest integtests"])])
 
         pipeline.add_stage(MyWebservice(self, "Prod", env=cdk.Environment(
             account='656001362760',
             region='eu-central-1'
         ) ),
         # Adding manual approval
-        pre=[pipelines.ManualApprovalStep("PromoteToProd")]
+        #pre=[pipelines.ManualApprovalStep("PromoteToProd")]
         )
     
 
