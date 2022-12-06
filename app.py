@@ -14,5 +14,4 @@ MyPipelineStack(app, 'PipelineStack',
         'account': PIPELINE_ACCOUNT,
         'region': 'eu-central-1'
     })
-
 app.synth()
