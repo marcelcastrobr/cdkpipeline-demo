@@ -15,8 +15,8 @@ class MyPipelineStack(Stack):
             synth=pipelines.ShellStep("Synth",
             input=pipelines.CodePipelineSource.git_hub("marcelcastrobr/cdkpipeline-demo", "main",
                 authentication=cdk.SecretValue.secrets_manager("github-secret")),
-                install_commands=["pip install -r requirements.txt"],
-                commands=["pytest unittests", "npx cdk synth"]))
+            install_commands=["pip install -r requirements.txt"],
+            commands=["pytest unittests", "npx cdk synth"]))
 
 
         my_app_preprod = MyWebservice(self, "Pre-prod", env=cdk.Environment(
