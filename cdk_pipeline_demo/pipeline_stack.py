@@ -20,7 +20,7 @@ class MyPipelineStack(Stack):
 
 
         my_app_preprod = MyWebservice(self, "Pre-prod", env=cdk.Environment(
-            account='656001362760',
+            account='558679333679',
             region='eu-central-1'
         ) )
         pipeline.add_stage(my_app_preprod,
@@ -29,7 +29,7 @@ class MyPipelineStack(Stack):
             commands=["pip install -r requirements.txt", "pytest integtests"])])
 
         pipeline.add_stage(MyWebservice(self, "Prod", env=cdk.Environment(
-            account='656001362760',
+            account='558679333679',
             region='eu-central-1'
         ) ),
         # Adding manual approval

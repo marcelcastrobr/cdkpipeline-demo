@@ -6,7 +6,8 @@ import aws_cdk as cdk
 from cdk_pipeline_demo.webservice_stack import WebServiceStack
 from cdk_pipeline_demo.pipeline_stack import MyPipelineStack
 
-PIPELINE_ACCOUNT = '656001362760'
+# AWS Account to be used.
+PIPELINE_ACCOUNT = '558679333679'
 
 app = cdk.App()
 MyPipelineStack(app, 'PipelineStack',
