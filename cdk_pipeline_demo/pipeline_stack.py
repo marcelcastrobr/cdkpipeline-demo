@@ -28,12 +28,12 @@ class MyPipelineStack(Stack):
             env_from_cfn_outputs={"URL": my_app_preprod.url_output},
             commands=["pip install -r requirements.txt", "pytest integtests"])])
 
-        pipeline.add_stage(MyWebservice(self, "Prod", env=cdk.Environment(
+        pipeline.add_stage(MyWebservice(self, "Production", env=cdk.Environment(
             account='558679333679',
             region='eu-central-1'
         ) ),
-        # Adding manual approval
-        #pre=[pipelines.ManualApprovalStep("PromoteToProd")]
+        ## Adding manual approval
+        pre=[pipelines.ManualApprovalStep("PromoteToProd")]
         )
     
 
