@@ -34,6 +34,6 @@ class MyPipelineStack(Stack):
         ) ),
         ## Adding manual approval
         #pre=[pipelines.ManualApprovalStep("PromoteToProd")]
-        #)
+        )
     
 
