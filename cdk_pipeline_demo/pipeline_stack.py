@@ -33,7 +33,7 @@ class MyPipelineStack(Stack):
             region='eu-central-1'
         ) ),
         ## Adding manual approval
-        pre=[pipelines.ManualApprovalStep("PromoteToProd")]
-        )
+        #pre=[pipelines.ManualApprovalStep("PromoteToProd")]
+        #)
     
 
